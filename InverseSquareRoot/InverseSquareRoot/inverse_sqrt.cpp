@@ -1,3 +1,6 @@
+
+#include <cmath>
+
 namespace inv_sqrt {
 	
 	float fast_inverse_square_root(float x) {
@@ -15,5 +18,25 @@ namespace inv_sqrt {
 		// y = y * (1.5F - x * 0.5F * y * y);	// 2nd iteration, this can be removed
 		return y;
 	}
+
+	double newtons_method(const double s, const double err = 1e-5) {
+		const double c = 1 / s;
+		double x, x_prev;
+
+		if (s > 1) {
+			x = 1;
+		}
+		else {
+			x = c;
+		}
+
+		do {
+			x_prev = x;
+			x -= (x * x - c) / (2 * x);
+		} while (abs(x - x_prev) > err);
+
+		return x;
+	}
+
 
 }
