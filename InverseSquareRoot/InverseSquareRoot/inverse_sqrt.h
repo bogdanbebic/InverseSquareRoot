@@ -6,7 +6,7 @@ namespace inv_sqrt {
 
 	/**
 	* \brief Finds the inverse square root
-	* \param x Number of which the inverse square root is calculated
+	* \param x Number for which the inverse square root is calculated
 	* \return Return value of approximate inverse square root of x
 	*
 	* Warning:
@@ -18,7 +18,7 @@ namespace inv_sqrt {
 
 	/**
 	* \brief Finds the inverse square root
-	* \param x Number of which the inverse square root is calculated
+	* \param x Number for which the inverse square root is calculated
 	* \return Return value of approximate inverse square root of x
 	*
 	* Warning:
@@ -28,6 +28,22 @@ namespace inv_sqrt {
 	* This function was not heavily tested and should not be used without further testing.
 	*/
 	double fast_inverse_square_root(double x);
+
+	/**
+	 * \brief Finds the inverse square root using Newton's method
+	 * \param s Number for which the inverse square root is calculated
+	 * \param err Approximation error for which the result is considered correct
+	 * \return Return value of approximate inverse square root of s
+	 */
+	double newtons_method(const double s, const double err = 1e-5);
+
+	/**
+	 * \brief Finds the inverse square root using binary search
+	 * \param x Number for which the inverse square root is calculated
+	 * \param err Approximation error for which the result is considered correct
+	 * \return Return value of approximate inverse square root of x
+	 */
+	double binary_search(double x, double err = 1e-5);
 
 }
 

@@ -38,5 +38,12 @@ namespace inv_sqrt {
 		return x;
 	}
 
+	double binary_search(double x, double err = 1e-5) {
+		double result = 0.0;
+
+		// TODO: implement
+
+		return result;
+	}
 
 }
