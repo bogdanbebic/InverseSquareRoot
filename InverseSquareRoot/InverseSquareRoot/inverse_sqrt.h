@@ -35,7 +35,7 @@ namespace inv_sqrt {
 	 * \param err Approximation error for which the result is considered correct
 	 * \return Return value of approximate inverse square root of s
 	 */
-	double newtons_method(const double s, const double err = 1e-5);
+	double newtons_method(double s, double err = 1e-5);
 
 	/**
 	 * \brief Finds the inverse square root using binary search
