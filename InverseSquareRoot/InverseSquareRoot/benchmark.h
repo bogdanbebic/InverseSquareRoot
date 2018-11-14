@@ -24,12 +24,26 @@ namespace benchmark {
 	std::chrono::duration<double> measure_time(double(*f)(double, double), std::vector<double> vec, double err);
 
 	/**
+	 * \brief Calculates the arithmetic mean of the vector vec
+	 * \param vec Vector for which the mean is calculated
+	 * \return Arithmetic mean of the vector vec
+	 */
+	double calculate_mean(std::vector<double> vec);
+
+	/**
 	 * \brief Calculates the mean squared error of vectors v1 and v2
 	 * \param v1 First vector
 	 * \param v2 seccond vector
 	 * \return Mean squared error on vectors v1 and v2
 	 */
 	double calculate_mse(std::vector<double> v1, std::vector<double> v2);
+
+	/**
+	 * \brief Calculates the standard deviation of vector vec
+	 * \param vec Vector for which the standard deviation is calculated
+	 * \return Standard deviation of vector vec
+	 */
+	double calculate_standard_deviation(std::vector<double> vec);
 
 }
 

@@ -21,6 +21,15 @@ std::chrono::duration<double> benchmark::measure_time(double(*f)(double, double)
 	return elapsed;
 }
 
+double benchmark::calculate_mean(std::vector<double> vec) {
+	double mean = 0.0;
+	for (auto elem : vec) {
+		mean += elem;
+	}
+	mean /= vec.size();
+	return mean;
+}
+
 double benchmark::calculate_mse(std::vector<double> v1, std::vector<double> v2) {
 	double mse = 0.0;
 	auto n = std::min(v1.size(), v2.size());
@@ -29,4 +38,15 @@ double benchmark::calculate_mse(std::vector<double> v1, std::vector<double> v2) 
 	}
 	mse /= n;
 	return mse;
+}
+
+double benchmark::calculate_standard_deviation(std::vector<double> vec) {
+	double standard_deviation = 0.0;
+	const double mean = calculate_mean(vec);
+	for (auto elem : vec) {
+		standard_deviation += (elem - mean) * (elem - mean);
+	}
+	standard_deviation /= vec.size();
+	standard_deviation = sqrt(standard_deviation);
+	return standard_deviation;
 }
