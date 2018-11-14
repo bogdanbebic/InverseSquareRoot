@@ -23,16 +23,38 @@ namespace inv_sqrt {
 		const double c = 1 / s;
 		double x, x_prev;
 
-		if (s > 1) {
-			x = 1;
-		}
-		else {
-			x = c;
-		}
+		s > 1 ? x = 1 : x = c;
 
 		do {
 			x_prev = x;
 			x -= (x * x - c) / (2 * x);
+		} while (abs(x - x_prev) > err);
+
+		return x;
+	}
+
+	double newtons_method_optimized_1(const double s, const double err = 1e-5) {
+		const double c = 1 / (2 * s);
+		double x, x_prev;
+
+		s > 1 ? x = 1 : x = c;
+
+		do {
+			x_prev = x;
+			x = 0.5 * x - c / x;
+		} while (abs(x - x_prev) > err);
+
+		return x;
+	}
+
+	double newtons_method_optimized_2(const double s, const double err = 1e-5) {
+		double x, x_prev;
+
+		s > 1 ? x = 1 : x = 1 / s;
+
+		do {
+			x_prev = x;
+			x *= 0.5 * (1 - s * x * x);
 		} while (abs(x - x_prev) > err);
 
 		return x;

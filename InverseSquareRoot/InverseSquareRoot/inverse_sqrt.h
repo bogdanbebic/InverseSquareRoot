@@ -38,6 +38,21 @@ namespace inv_sqrt {
 	double newtons_method(double s, double err = 1e-5);
 
 	/**
+	 * \brief Optimized version of Newton's method - less costly arithmetic operations
+	 * \param s Number for which the inverse square root is calculated
+	 * \param err Approximation error for which the result is considered correct
+	 * \return Return value of approximate inverse square root of s
+	 */
+	double newtons_method_optimized_1(double s, double err = 1e-5);
+	/**
+	 * \brief Second possible optimized version of Newton's method - less costly arithmetic operations
+	 * \param s Number for which the inverse square root is calculated
+	 * \param err Approximation error for which the result is considered correct
+	 * \return Return value of approximate inverse square root of s
+	 */
+	double newtons_method_optimized_2(double s, double err = 1e-5);
+	
+	/**
 	 * \brief Finds the inverse square root using binary search
 	 * \param x Number for which the inverse square root is calculated
 	 * \param err Approximation error for which the result is considered correct
