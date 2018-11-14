@@ -21,9 +21,15 @@
     <ClCompile Include="inverse_sqrt.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="benchmark.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="inverse_sqrt.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="benchmark.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
