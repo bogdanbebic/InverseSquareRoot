@@ -61,11 +61,21 @@ namespace inv_sqrt {
 	}
 
 	double binary_search(double x, double err = 1e-5) {
-		double result = 0.0;
+		const double s = 1 / x;
+		double a, b, mid;
+		a = 0;
+		s > 1 ? b = s :b = 1;
+		
+		int n = log2((b - a) / err);
 
-		// TODO: implement
-
-		return result;
+		for (int i = 0; i < n; i++) {
+			mid = (b + a) / 2;
+			if ((mid*mid - s) == 0) return mid;
+			else if (((mid*mid - s)*(a*a - s)) < 0) b = mid;
+			else a = mid;
+		}
+	
+		return mid;
 	}
 
 }
