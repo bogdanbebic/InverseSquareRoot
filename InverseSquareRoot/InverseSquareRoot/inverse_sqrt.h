@@ -59,6 +59,13 @@ namespace inv_sqrt {
 	 * \return Return value of approximate inverse square root of x
 	 */
 	double binary_search(double x, double err = 1e-5);
+	/**
+	 * \brief Finds the inverse square root using binary search
+	 * \param x Number for which the inverse square root is calculated
+	 * \param err Approximation error for which the result is considered correct
+	 * \return Return value of approximate inverse square root of x
+	 */
+	double binary_search_part2(double x, double err = 1e-5) {
 
 }
 
