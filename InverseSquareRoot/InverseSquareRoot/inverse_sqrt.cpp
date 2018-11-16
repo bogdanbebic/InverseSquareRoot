@@ -77,5 +77,23 @@ namespace inv_sqrt {
 	
 		return mid;
 	}
+	double binary_search_part2(double x, double err = 1e-5) {
+		const double s = 1 / x;
+		double a, b, mid;
+		a = mid = 0;
+		
+		s > 1 ? b = s : b = 1;
+		
+		do {
+			mid_pred = mid;
+			mid = (b + a) / 2;
+			if ((mid*mid - s) == 0) return mid;
+			else if (((mid*mid - s)*(a*a - s)) < 0) b = mid;
+			else a = mid;
+
+		} while (abs(mid - mid_pred) > err);
+	
+		return mid;
+	}
 
 }
