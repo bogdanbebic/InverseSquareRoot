@@ -60,6 +60,42 @@ namespace inv_sqrt {
 		return x;
 	}
 
+	double regula_falsi_method_version_1(const double s, const double err = 1e-5) {
+		const double c = 1 / s;
+		double b = s > 1 ? 1 : c, a = 0;
+		double x_prev, x = b;
+
+		do {
+			x_prev = x;
+			const double f_b = b * b - c;
+			x = b - f_b / (b + a);
+			if ((x * x - c) * f_b < 0)
+				a = x;
+			else
+				b = x;
+		} while (abs(x - x_prev) > err);
+
+		return x;
+	}
+
+	double regula_falsi_method_version_2(const double s, const double err = 1e-6) {
+		const double c = 1 / s;
+		double b = s > 1 ? 1 : c, a = 0;
+		double x_prev, x = b;
+
+		do {
+			x_prev = x;
+			x = (a * b + c) / (b + a);
+			if ((x * x - c) * (b * b - c) < 0)
+				a = x;
+			else
+				b = x;
+		} while (abs(x - x_prev) > err);
+
+		return x;
+	}
+
+
 	double binary_search(double x, double err = 1e-5) {
 		const double s = 1 / x;
 		double a, b, mid;
@@ -79,7 +115,7 @@ namespace inv_sqrt {
 	}
 	double binary_search_part2(double x, double err = 1e-5) {
 		const double s = 1 / x;
-		double a, b, mid;
+		double a, b, mid, mid_pred;
 		a = mid = 0;
 		
 		s > 1 ? b = s : b = 1;

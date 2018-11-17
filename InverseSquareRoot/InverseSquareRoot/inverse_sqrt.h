@@ -44,6 +44,7 @@ namespace inv_sqrt {
 	 * \return Return value of approximate inverse square root of s
 	 */
 	double newtons_method_optimized_1(double s, double err = 1e-5);
+
 	/**
 	 * \brief Second possible optimized version of Newton's method - less costly arithmetic operations
 	 * \param s Number for which the inverse square root is calculated
@@ -51,6 +52,22 @@ namespace inv_sqrt {
 	 * \return Return value of approximate inverse square root of s
 	 */
 	double newtons_method_optimized_2(double s, double err = 1e-5);
+
+	/**
+	 * \brief Finds the inverse square root using Regula Falsi method - version 1
+	 * \param s Number for which the inverse square root is calculated
+	 * \param err Approximation error for which the result is considered correct
+	 * \return Return value of approximate inverse square root of s
+	 */
+	double regula_falsi_method_version_1(double s, double err = 1e-5);
+
+	/**
+	 * \brief Finds the inverse square root using Regula Falsi method - version 2
+	 * \param s Number for which the inverse square root is calculated
+	 * \param err Approximation error for which the result is considered correct
+	 * \return Return value of approximate inverse square root of s
+	 */
+	double regula_falsi_method_version_2(double s, double err = 1e-5);
 	
 	/**
 	 * \brief Finds the inverse square root using binary search
@@ -59,13 +76,14 @@ namespace inv_sqrt {
 	 * \return Return value of approximate inverse square root of x
 	 */
 	double binary_search(double x, double err = 1e-5);
+
 	/**
 	 * \brief Finds the inverse square root using binary search
 	 * \param x Number for which the inverse square root is calculated
 	 * \param err Approximation error for which the result is considered correct
 	 * \return Return value of approximate inverse square root of x
 	 */
-	double binary_search_part2(double x, double err = 1e-5) {
+	double binary_search_part2(double x, double err = 1e-5);
 
 }
 
