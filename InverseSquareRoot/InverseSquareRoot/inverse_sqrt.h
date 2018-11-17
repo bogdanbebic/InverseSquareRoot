@@ -74,6 +74,7 @@ namespace inv_sqrt {
 	 * \param x Number for which the inverse square root is calculated
 	 * \param err Approximation error for which the result is considered correct
 	 * \return Return value of approximate inverse square root of x
+	 * Finds the number of iterations based on the param err and does binary search for that number of iterations
 	 */
 	double binary_search(double x, double err = 1e-5);
 
@@ -83,7 +84,7 @@ namespace inv_sqrt {
 	 * \param err Approximation error for which the result is considered correct
 	 * \return Return value of approximate inverse square root of x
 	 */
-	double binary_search_part2(double x, double err = 1e-5);
+	double binary_search_version_2(double x, double err = 1e-5);
 
 }
 

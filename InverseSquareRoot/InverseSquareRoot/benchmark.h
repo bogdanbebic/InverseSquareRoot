@@ -4,6 +4,13 @@
 #include <vector>
 #include <chrono>
 
+namespace test_vectors {
+	extern std::vector<double> degree2_numbers;
+	extern std::vector<double> prime_6_k_plus_minus_1;
+	extern std::vector<double> rand_doubles;
+	extern std::vector<double> rand_small_doubles;
+}
+
 namespace benchmark {
 
 	/**

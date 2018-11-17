@@ -101,8 +101,8 @@ namespace inv_sqrt {
 		double a, b, mid;
 		a = 0;
 		s > 1 ? b = s :b = 1;
-		
-		int n = log2((b - a) / err);
+
+		const auto n = static_cast<int>(log2((b - a) / err));
 
 		for (int i = 0; i < n; i++) {
 			mid = (b + a) / 2;
@@ -113,7 +113,7 @@ namespace inv_sqrt {
 	
 		return mid;
 	}
-	double binary_search_part2(double x, double err = 1e-5) {
+	double binary_search_version_2(double x, double err = 1e-5) {
 		const double s = 1 / x;
 		double a, b, mid, mid_pred;
 		a = mid = 0;
