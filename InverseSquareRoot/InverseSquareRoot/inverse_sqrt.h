@@ -5,6 +5,11 @@
 namespace inv_sqrt {
 
 	/**
+	 * \brief Acceptable error used in iterative methods
+	 */
+	extern const double error;
+
+	/**
 	 * \brief Finds the inverse square root of number x using the cmath library
 	 * \param x Number for which the inverse square root is calculated
 	 * \return Return value of approximate inverse square root of x
@@ -42,7 +47,7 @@ namespace inv_sqrt {
 	 * \param err Approximation error for which the result is considered correct
 	 * \return Return value of approximate inverse square root of s
 	 */
-	double newtons_method(double s, double err = 1e-5);
+	double newtons_method(double s, double err = error);
 
 	/**
 	 * \brief Optimized version of Newton's method - less costly arithmetic operations
@@ -50,7 +55,7 @@ namespace inv_sqrt {
 	 * \param err Approximation error for which the result is considered correct
 	 * \return Return value of approximate inverse square root of s
 	 */
-	double newtons_method_optimized_1(double s, double err = 1e-5);
+	double newtons_method_optimized_1(double s, double err = error);
 
 	/**
 	 * \brief Second possible optimized version of Newton's method - less costly arithmetic operations
@@ -58,7 +63,7 @@ namespace inv_sqrt {
 	 * \param err Approximation error for which the result is considered correct
 	 * \return Return value of approximate inverse square root of s
 	 */
-	double newtons_method_optimized_2(double s, double err = 1e-5);
+	double newtons_method_optimized_2(double s, double err = error);
 
 	/**
 	 * \brief Finds the inverse square root using Regula Falsi method - version 1
@@ -66,7 +71,7 @@ namespace inv_sqrt {
 	 * \param err Approximation error for which the result is considered correct
 	 * \return Return value of approximate inverse square root of s
 	 */
-	double regula_falsi_method_version_1(double s, double err = 1e-5);
+	double regula_falsi_method_version_1(double s, double err = error);
 
 	/**
 	 * \brief Finds the inverse square root using Regula Falsi method - version 2
@@ -74,7 +79,7 @@ namespace inv_sqrt {
 	 * \param err Approximation error for which the result is considered correct
 	 * \return Return value of approximate inverse square root of s
 	 */
-	double regula_falsi_method_version_2(double s, double err = 1e-5);
+	double regula_falsi_method_version_2(double s, double err = error);
 	
 	/**
 	 * \brief Finds the inverse square root using binary search
@@ -83,7 +88,7 @@ namespace inv_sqrt {
 	 * \return Return value of approximate inverse square root of x
 	 * Finds the number of iterations based on the param err and does binary search for that number of iterations
 	 */
-	double binary_search(double x, double err = 1e-5);
+	double binary_search(double x, double err = error);
 
 	/**
 	 * \brief Finds the inverse square root using binary search
@@ -91,7 +96,7 @@ namespace inv_sqrt {
 	 * \param err Approximation error for which the result is considered correct
 	 * \return Return value of approximate inverse square root of x
 	 */
-	double binary_search_version_2(double x, double err = 1e-5);
+	double binary_search_version_2(double x, double err = error);
 
 }
 

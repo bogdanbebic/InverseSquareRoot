@@ -1,6 +1,10 @@
 #include "inverse_sqrt.h"
 #include <cmath>
 
+/**
+ * \brief Constant defined for testing purposes
+ */
+const double inv_sqrt::error = 1e-5;
 
 double inv_sqrt::cmath_inv_sqrt(double x) {
 	return 1.0 / sqrt(x);
@@ -36,11 +40,10 @@ double inv_sqrt::newtons_method(const double s, const double err) {
 	return x;
 }
 
+// BUG: DOES NOT WORK
 double inv_sqrt::newtons_method_optimized_1(const double s, const double err) {
 	const double c = 1 / (2 * s);
-	double x, x_prev;
-
-	s > 1 ? x = 1 : x = c;
+	double x_prev, x = s > 1 ? 1 : 2 * c;
 
 	do {
 		x_prev = x;
@@ -50,6 +53,7 @@ double inv_sqrt::newtons_method_optimized_1(const double s, const double err) {
 	return x;
 }
 
+// BUG: DOES NOT WORK
 double inv_sqrt::newtons_method_optimized_2(const double s, const double err) {
 	double x, x_prev;
 
