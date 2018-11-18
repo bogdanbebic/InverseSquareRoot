@@ -134,6 +134,11 @@ std::vector<double> test_vectors::rand_small_doubles { 0.41108501816673615,
 	0.671243419393269,
 	0.6039474492069155 };
 
+/**
+ * \brief 52 is the magic number for precision in IEEE 754 floating point double precision
+ */
+const int benchmark::precision_output = 52;
+
 std::chrono::duration<double> benchmark::measure_time(double(*f)(double), std::vector<double> vec) {
 	const auto start = std::chrono::system_clock::now();
 	for (double elem : vec) {

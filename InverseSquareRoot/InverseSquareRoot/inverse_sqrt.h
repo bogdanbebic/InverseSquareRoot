@@ -5,6 +5,13 @@
 namespace inv_sqrt {
 
 	/**
+	 * \brief Finds the inverse square root of number x using the cmath library
+	 * \param x Number for which the inverse square root is calculated
+	 * \return Return value of approximate inverse square root of x
+	 */
+	double cmath_inv_sqrt(double x);
+
+	/**
 	* \brief Finds the inverse square root
 	* \param x Number for which the inverse square root is calculated
 	* \return Return value of approximate inverse square root of x

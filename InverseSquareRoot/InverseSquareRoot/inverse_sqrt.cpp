@@ -2,7 +2,10 @@
 #include <cmath>
 
 namespace inv_sqrt {
-	
+	double cmath_inv_sqrt(double x) {
+		return 1.0 / sqrt(x);
+	}
+
 	float fast_inverse_square_root(float x) {
 		auto i = 0x5f3759df - (*reinterpret_cast<int*>(&x) >> 1);
 		auto y = *reinterpret_cast<float*>(&i);

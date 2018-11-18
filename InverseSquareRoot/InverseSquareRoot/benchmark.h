@@ -14,6 +14,11 @@ namespace test_vectors {
 namespace benchmark {
 
 	/**
+	 * \brief Variable which determines the number of decimals to be printed
+	 */
+	extern const int precision_output;
+
+	/**
 	 * \brief Measures time for call of f on every element of vec
 	 * \param f Function to be called on every element of vec
 	 * \param vec Vector on whose elements f is called
