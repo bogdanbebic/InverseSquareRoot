@@ -4,7 +4,7 @@
 /**
  * \brief Constant defined for testing purposes
  */
-const double inv_sqrt::error = 1e-5;
+const double inv_sqrt::error = 1e-2;
 
 double inv_sqrt::cmath_inv_sqrt(double x) {
 	return 1.0 / sqrt(x);

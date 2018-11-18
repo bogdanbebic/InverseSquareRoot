@@ -59,45 +59,58 @@ std::vector<double> calc_inv_sqrt_for_test_vectors(double(*f)(double, double), d
 	return vec;
 }
 
+double calculate_mse_from_cmath(double(*f)(double)) {
+	auto cmath_vec = calc_inv_sqrt_for_test_vectors(inv_sqrt::cmath_inv_sqrt);
+	auto vec = calc_inv_sqrt_for_test_vectors(f);
+
+	return benchmark::calculate_mse(cmath_vec, vec);
+}
+
+double calculate_mse_from_cmath(double(*f)(double, double), double error) {
+	auto cmath_vec = calc_inv_sqrt_for_test_vectors(inv_sqrt::cmath_inv_sqrt);
+	auto vec = calc_inv_sqrt_for_test_vectors(f, error);
+
+	return benchmark::calculate_mse(cmath_vec, vec);
+}
+
 int main() {
 	std::cout << std::setprecision(benchmark::precision_output) << std::fixed;
 	
-	auto time_cmath = calc_time_for_all_test_vectors(inv_sqrt::cmath_inv_sqrt);
-	auto time_fast_inv_sqrt = calc_time_for_all_test_vectors(inv_sqrt::fast_inverse_square_root);
-	auto time_newton = calc_time_for_all_test_vectors(inv_sqrt::newtons_method, inv_sqrt::error);
-	/*	BUG: fix
-	auto time_newton_opt1 = calc_time_for_all_test_vectors(inv_sqrt::newtons_method_optimized_1, inv_sqrt::error);
-	*/
-	/*	BUG: fix
-	auto time_newton_opt2 = calc_time_for_all_test_vectors(inv_sqrt::newtons_method_optimized_2, inv_sqrt::error);
-	*/
-	auto time_regula_falsi_1 = calc_time_for_all_test_vectors(inv_sqrt::regula_falsi_method_version_1, inv_sqrt::error);
-	auto time_regula_falsi_2 = calc_time_for_all_test_vectors(inv_sqrt::regula_falsi_method_version_2, inv_sqrt::error);
-	auto time_bin_search = calc_time_for_all_test_vectors(inv_sqrt::binary_search, inv_sqrt::error);
-	auto time_bin_search_version_2 = calc_time_for_all_test_vectors(inv_sqrt::binary_search_version_2, inv_sqrt::error);
-
+	std::cout << "------------------------------------------------------" << std::endl;
+	std::cout << "Time calculation - in milliseconds" << std::endl;
+	std::cout << "------------------------------------------------------" << std::endl;
+	
 	std::cout << "cmath:" 
-		<< std::endl << time_cmath.count() << std::endl;
+		<< std::endl << calc_time_for_all_test_vectors(inv_sqrt::cmath_inv_sqrt).count() << std::endl;
 	std::cout << "Fast inverse sqrt:" 
-		<< std::endl << time_fast_inv_sqrt.count() << std::endl;
+		<< std::endl << calc_time_for_all_test_vectors(inv_sqrt::fast_inverse_square_root).count() << std::endl;
 	std::cout << "Newton:" 
-		<< std::endl << time_newton.count() << std::endl;
-
-	/* BUG: fix
-	std::cout << "Newton v2 (opt1):" 
-		<< std::endl << time_newton_opt1.count() << std::endl;
-	std::cout << "Newton v3 (opt2):" 
-		<< std::endl << time_newton_opt2.count() << std::endl;
-	*/
-
+		<< std::endl << calc_time_for_all_test_vectors(inv_sqrt::newtons_method, inv_sqrt::error).count() << std::endl;
 	std::cout << "Regula Falsi v1:"
-		<< std::endl << time_regula_falsi_1.count() << std::endl;
+		<< std::endl << calc_time_for_all_test_vectors(inv_sqrt::regula_falsi_method_version_1, inv_sqrt::error).count() << std::endl;
 	std::cout << "Regula Falsi v2:"
-		<< std::endl << time_regula_falsi_2.count() << std::endl;
+		<< std::endl << calc_time_for_all_test_vectors(inv_sqrt::regula_falsi_method_version_2, inv_sqrt::error).count() << std::endl;
 	std::cout << "Binary search (calculates number of iterations):"
-		<< std::endl << time_bin_search.count() << std::endl;
+		<< std::endl << calc_time_for_all_test_vectors(inv_sqrt::binary_search, inv_sqrt::error).count() << std::endl;
 	std::cout << "Binary search:"
-		<< std::endl << time_bin_search_version_2.count() << std::endl;
+		<< std::endl << calc_time_for_all_test_vectors(inv_sqrt::binary_search_version_2, inv_sqrt::error).count() << std::endl;
+
+	std::cout << "------------------------------------------------------" << std::endl;
+	std::cout << "MSE calculation - relative to cmath" << std::endl;
+	std::cout << "------------------------------------------------------" << std::endl;
+
+	std::cout << "Fast inverse sqrt:"
+		<< std::endl << calculate_mse_from_cmath(inv_sqrt::fast_inverse_square_root) << std::endl;
+	std::cout << "Newton:"
+		<< std::endl << calculate_mse_from_cmath(inv_sqrt::newtons_method, inv_sqrt::error) << std::endl;
+	std::cout << "Regula Falsi v1:"
+		<< std::endl << calculate_mse_from_cmath(inv_sqrt::regula_falsi_method_version_1, inv_sqrt::error) << std::endl;
+	std::cout << "Regula Falsi v2:"
+		<< std::endl << calculate_mse_from_cmath(inv_sqrt::regula_falsi_method_version_2, inv_sqrt::error) << std::endl;
+	std::cout << "Binary search (calculates number of iterations):"
+		<< std::endl << calculate_mse_from_cmath(inv_sqrt::binary_search, inv_sqrt::error) << std::endl;
+	std::cout << "Binary search:"
+		<< std::endl << calculate_mse_from_cmath(inv_sqrt::binary_search_version_2, inv_sqrt::error) << std::endl;
 
 	system("pause");
 }
