@@ -4,7 +4,19 @@
 #include <vector>
 #include <chrono>
 
+namespace test_vectors {
+	extern std::vector<double> degree2_numbers;
+	extern std::vector<double> prime_6_k_plus_minus_1;
+	extern std::vector<double> rand_doubles;
+	extern std::vector<double> rand_small_doubles;
+}
+
 namespace benchmark {
+
+	/**
+	 * \brief Variable which determines the number of decimals to be printed
+	 */
+	extern const int precision_output;
 
 	/**
 	 * \brief Measures time for call of f on every element of vec
@@ -22,6 +34,14 @@ namespace benchmark {
 	* \return Duration of the for loop of f(elem, err) for elem: vec
 	*/
 	std::chrono::duration<double> measure_time(double(*f)(double, double), std::vector<double> vec, double err);
+
+	/**
+	 * \brief Calculates (elementwise) absolute difference between every element of vectors v1 and v2
+	 * \param v1 Vector 1
+	 * \param v2 Vector 2
+	 * \return Vector which contains the elementwise absolute difference between vectors v1 and v2
+	 */
+	std::vector<double> abs_difference(std::vector<double> v1, std::vector<double> v2);
 
 	/**
 	 * \brief Calculates the arithmetic mean of the vector vec
