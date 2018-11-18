@@ -73,9 +73,34 @@ double calculate_mse_from_cmath(double(*f)(double, double), double error) {
 	return benchmark::calculate_mse(cmath_vec, vec);
 }
 
+double calculate_mean_error_from_cmath(double(*f)(double)) {
+	auto cmath_vec = calc_inv_sqrt_for_test_vectors(inv_sqrt::cmath_inv_sqrt);
+	auto vec = calc_inv_sqrt_for_test_vectors(f);
+	return benchmark::calculate_mean(benchmark::abs_difference(cmath_vec, vec));
+}
+
+double calculate_mean_error_from_cmath(double(*f)(double, double), double error) {
+	auto cmath_vec = calc_inv_sqrt_for_test_vectors(inv_sqrt::cmath_inv_sqrt);
+	auto vec = calc_inv_sqrt_for_test_vectors(f, error);
+	return benchmark::calculate_mean(benchmark::abs_difference(cmath_vec, vec));
+}
+
+double calculate_standard_deviation_of_error_from_cmath(double(*f)(double)) {
+	auto cmath_vec = calc_inv_sqrt_for_test_vectors(inv_sqrt::cmath_inv_sqrt);
+	auto vec = calc_inv_sqrt_for_test_vectors(f);
+	return benchmark::calculate_standard_deviation(benchmark::abs_difference(cmath_vec, vec));
+}
+
+double calculate_standard_deviation_of_error_from_cmath(double(*f)(double, double), double error) {
+	auto cmath_vec = calc_inv_sqrt_for_test_vectors(inv_sqrt::cmath_inv_sqrt);
+	auto vec = calc_inv_sqrt_for_test_vectors(f, error);
+	return benchmark::calculate_standard_deviation(benchmark::abs_difference(cmath_vec, vec));
+}
+
 int main() {
 	std::cout << std::setprecision(benchmark::precision_output) << std::fixed;
-	
+
+	// Time calculation and output
 	std::cout << "------------------------------------------------------" << std::endl;
 	std::cout << "Time calculation - in milliseconds" << std::endl;
 	std::cout << "------------------------------------------------------" << std::endl;
@@ -95,6 +120,7 @@ int main() {
 	std::cout << "Binary search:"
 		<< std::endl << calc_time_for_all_test_vectors(inv_sqrt::binary_search_version_2, inv_sqrt::error).count() << std::endl;
 
+	// MSE calculation and output
 	std::cout << "------------------------------------------------------" << std::endl;
 	std::cout << "MSE calculation - relative to cmath" << std::endl;
 	std::cout << "------------------------------------------------------" << std::endl;
@@ -111,6 +137,42 @@ int main() {
 		<< std::endl << calculate_mse_from_cmath(inv_sqrt::binary_search, inv_sqrt::error) << std::endl;
 	std::cout << "Binary search:"
 		<< std::endl << calculate_mse_from_cmath(inv_sqrt::binary_search_version_2, inv_sqrt::error) << std::endl;
+
+	// Mean error calculation and output
+	std::cout << "------------------------------------------------------" << std::endl;
+	std::cout << "Mean error calculation - relative to cmath" << std::endl;
+	std::cout << "------------------------------------------------------" << std::endl;
+
+	std::cout << "Fast inverse sqrt:"
+		<< std::endl << calculate_mean_error_from_cmath(inv_sqrt::fast_inverse_square_root) << std::endl;
+	std::cout << "Newton:"
+		<< std::endl << calculate_mean_error_from_cmath(inv_sqrt::newtons_method, inv_sqrt::error) << std::endl;
+	std::cout << "Regula Falsi v1:"
+		<< std::endl << calculate_mean_error_from_cmath(inv_sqrt::regula_falsi_method_version_1, inv_sqrt::error) << std::endl;
+	std::cout << "Regula Falsi v2:"
+		<< std::endl << calculate_mean_error_from_cmath(inv_sqrt::regula_falsi_method_version_2, inv_sqrt::error) << std::endl;
+	std::cout << "Binary search (calculates number of iterations):"
+		<< std::endl << calculate_mean_error_from_cmath(inv_sqrt::binary_search, inv_sqrt::error) << std::endl;
+	std::cout << "Binary search:"
+		<< std::endl << calculate_mean_error_from_cmath(inv_sqrt::binary_search_version_2, inv_sqrt::error) << std::endl;
+
+	// Standard deviation of error and output
+	std::cout << "------------------------------------------------------" << std::endl;
+	std::cout << "Standard deviation of error - relative to cmath" << std::endl;
+	std::cout << "------------------------------------------------------" << std::endl;
+
+	std::cout << "Fast inverse sqrt:"
+		<< std::endl << calculate_standard_deviation_of_error_from_cmath(inv_sqrt::fast_inverse_square_root) << std::endl;
+	std::cout << "Newton:"
+		<< std::endl << calculate_standard_deviation_of_error_from_cmath(inv_sqrt::newtons_method, inv_sqrt::error) << std::endl;
+	std::cout << "Regula Falsi v1:"
+		<< std::endl << calculate_standard_deviation_of_error_from_cmath(inv_sqrt::regula_falsi_method_version_1, inv_sqrt::error) << std::endl;
+	std::cout << "Regula Falsi v2:"
+		<< std::endl << calculate_standard_deviation_of_error_from_cmath(inv_sqrt::regula_falsi_method_version_2, inv_sqrt::error) << std::endl;
+	std::cout << "Binary search (calculates number of iterations):"
+		<< std::endl << calculate_standard_deviation_of_error_from_cmath(inv_sqrt::binary_search, inv_sqrt::error) << std::endl;
+	std::cout << "Binary search:"
+		<< std::endl << calculate_standard_deviation_of_error_from_cmath(inv_sqrt::binary_search_version_2, inv_sqrt::error) << std::endl;
 
 	system("pause");
 }

@@ -159,6 +159,16 @@ std::chrono::duration<double> benchmark::measure_time(double(*f)(double, double)
 	return elapsed;
 }
 
+std::vector<double> benchmark::abs_difference(std::vector<double> v1, std::vector<double> v2) {
+	std::vector<double> abs_diff;
+	auto n = std::min(v1.size(), v2.size());
+	abs_diff.reserve(n);
+	for (auto i = 0; i < n; i++) {
+		abs_diff.push_back(std::abs(v1[i] - v2[i]));
+	}
+	return abs_diff;
+}
+
 double benchmark::calculate_mean(std::vector<double> vec) {
 	double mean = 0.0;
 	for (auto elem : vec) {

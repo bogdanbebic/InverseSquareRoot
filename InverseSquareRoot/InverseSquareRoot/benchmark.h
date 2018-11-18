@@ -36,6 +36,14 @@ namespace benchmark {
 	std::chrono::duration<double> measure_time(double(*f)(double, double), std::vector<double> vec, double err);
 
 	/**
+	 * \brief Calculates (elementwise) absolute difference between every element of vectors v1 and v2
+	 * \param v1 Vector 1
+	 * \param v2 Vector 2
+	 * \return Vector which contains the elementwise absolute difference between vectors v1 and v2
+	 */
+	std::vector<double> abs_difference(std::vector<double> v1, std::vector<double> v2);
+
+	/**
 	 * \brief Calculates the arithmetic mean of the vector vec
 	 * \param vec Vector for which the mean is calculated
 	 * \return Arithmetic mean of the vector vec
