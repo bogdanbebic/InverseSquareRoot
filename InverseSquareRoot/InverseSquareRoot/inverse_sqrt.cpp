@@ -1,6 +1,10 @@
 #include "inverse_sqrt.h"
 #include <cmath>
 
+/**\file inverse_sqrt.cpp
+ * \brief Definitions of inverse sqrt functions
+ */
+
 /**
  * \brief Constant defined for testing purposes
  */

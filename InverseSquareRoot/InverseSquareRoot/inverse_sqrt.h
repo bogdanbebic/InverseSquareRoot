@@ -1,7 +1,14 @@
 #pragma once
 #ifndef _INVERSE_SQRT_H_
-#define _INVERSE_SQRT_H_
+#define _INVERSE_SQRT_H_	///< Header guard
 
+/**\file inverse_sqrt.h
+ * \brief Declarations of all necessary inverse sqrt functionalities
+ */
+
+/**
+ * \brief Inverse sqrt functionalities
+ */
 namespace inv_sqrt {
 
 	/**

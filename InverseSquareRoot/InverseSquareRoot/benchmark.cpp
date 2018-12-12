@@ -1,6 +1,9 @@
 #include "benchmark.h"
 #include <algorithm>
 
+/**\file benchmark.cpp
+ * \brief Definitions of bencmarking and test functions
+ */
 
 std::vector<double> test_vectors::degree2_numbers { 1.0,
 	2.0,

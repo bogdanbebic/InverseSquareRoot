@@ -1,9 +1,16 @@
 #pragma once
 #ifndef _BENCHMARK_H_
-#define _BENCHMARK_H_
+#define _BENCHMARK_H_	///< Header guard
 #include <vector>
 #include <chrono>
 
+/**\file benchmark.h
+ * \brief Declarations of all necessary bencmarking and test functionalities
+ */
+
+/**
+ * \brief Vectors used in testing
+ */
 namespace test_vectors {
 	extern std::vector<double> degree2_numbers;
 	extern std::vector<double> prime_6_k_plus_minus_1;
@@ -11,6 +18,9 @@ namespace test_vectors {
 	extern std::vector<double> rand_small_doubles;
 }
 
+/**
+ * \brief Benchmarking functionalities
+ */
 namespace benchmark {
 
 	/**

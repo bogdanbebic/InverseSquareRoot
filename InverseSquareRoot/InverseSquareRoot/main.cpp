@@ -3,6 +3,10 @@
 #include "benchmark.h"
 #include "inverse_sqrt.h"
 
+/** \file main.cpp
+ *	\brief Bencmarks the inverse sqrt algorithms
+ */
+
 std::chrono::duration<double> calc_time_for_all_test_vectors(double(*f)(double)) {
 	auto time = benchmark::measure_time(f, test_vectors::rand_small_doubles);
 	time += benchmark::measure_time(f, test_vectors::rand_doubles);
